@@ -1,4 +1,5 @@
 class GroceriesController < ApplicationController
+  before_action :set_grocery, only: [:show, :edit, :update, :destroy]
 
   def index
   end

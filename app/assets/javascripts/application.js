@@ -15,3 +15,21 @@
 //= require turbolinks
 //= require_tree .
 
+var groceries = angular.module('groceries', ['ngResource']);
+
+// Cross Site Request Forgery token is required by Rails for AJAX requests.
+app.config(function ($httpProvider) {
+  // CSRF
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+});
+
+groceries.factory('', function($resource) {
+  $resource();
+});
+
+groceries.controller('GroceriesCtrl', function($scope){
+  $scope.addGrocery = function(e) {
+
+  };
+
+});

@@ -1,7 +1,14 @@
-<div class="row">
-  <div class="large-12 columns">
-    <h1>Hello! I am an Angular JS + Ruby on Rails Application.</h1>
-    <p>At this moment, I am useless.</p>
-    <p>You must help me!</p>
-  </div>
-</div>
+<section ng-controller="GroceriesCtrl">
+  <h1>Grocery List</h1>
+  <form ng-submit="addGrocery($event)">
+    <label for="new_grocery">Add a Grocery Item to Your List</label>
+    <input id="new_grocery" name="new_grocery" type="text" class="form-control" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
+  </form>
+
+  <ul class="todos">
+    <li ng-repeat="grocery in groceries" ng-class="{healthy: grocery.healthy}">
+      {{ grocery.name }} <button ng-click="deleteGrocery($event,grocery,$index)">X</button>
+    </li>
+  </ul>
+
+</section>

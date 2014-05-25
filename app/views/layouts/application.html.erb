@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="groceries">
+<html lang="en" ng-app="groceriesApp">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,12 +11,9 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body ng-cloak>
     <div class="row">
       <div class="large-12 columns">
-        <h1>Hello! I am an Angular JS + Ruby on Rails Application.</h1>
-        <p>At this moment, I am useless.</p>
-        <p>You must help me!</p>
         <%= yield %>
       </div>
     </div>

@@ -70,7 +70,7 @@ class GroceriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grocery_params
-      params.require(:grocery).permit(:title, :healthy)
+      params.require(:grocery).permit(:name, :healthy)
     end
 
 end

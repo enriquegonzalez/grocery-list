@@ -12,6 +12,9 @@
 //
 //= require angular
 //= require angular-resource
+//= require jquery
+//= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
 
@@ -19,23 +22,26 @@
 var groceriesApp = angular.module('groceriesApp', ['ngResource']);
 
 // Cross Site Request Forgery token is required by Rails for AJAX requests.
-groceriesApp.config(function ($httpProvider) {
+groceriesApp.config(['$httpProvider', function ($httpProvider) {
   // CSRF
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
-});
+}]);
 
 
 // FACTORY
-groceriesApp.factory('Grocery', function ($resource) {
+groceriesApp.factory('Grocery', ['$resource', function ($resource) {
+  alert('im here at the factory');
   return $resource("/groceries/:id.json", {id: '@id'}, {
     update: {
       method: 'PUT'
     }
   });
-});
+}]);
+
+
 
 // CONTROLLER
-groceriesApp.controller('GroceriesCtrl', function ($scope, Grocery){
+groceriesApp.controller('GroceriesCtrl', ['$scope', 'Grocery', function ($scope, Grocery){
 
   // Get the Groceries
   $scope.groceries = Grocery.query();
@@ -55,4 +61,6 @@ groceriesApp.controller('GroceriesCtrl', function ($scope, Grocery){
     e.preventDefault();
   };
 
-});
+}]);
+
+$(function(){ $(document).foundation(); });

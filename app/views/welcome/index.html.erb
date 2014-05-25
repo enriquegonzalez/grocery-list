@@ -1,15 +1,14 @@
 <section ng-controller="GroceriesCtrl">
   <h1>Grocery List</h1>
   <form ng-submit="addGrocery($event)">
+    <label for="is_healthy">
+    <input id="is_healthy" name="is_healthy" type="checkbox" class="form-control" ng-model="isHealthy" ng-checked="true"> It's healthy!</label>
     <label for="new_grocery">Add a Grocery Item to Your List</label>
     <input id="new_grocery" name="new_grocery" type="text" class="form-control" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
-
-    <label for="is_healthy">
-    <input id="is_healthy" name="is_healthy" type="checkbox" class="form-control" ng-model="isHealthy" checked> It's healthy!</label>
   </form>
 
   <ul class="groceries">
-    <li ng-repeat="grocery in groceries" ng-class="{healthy: grocery.healthy}">
+    <li ng-repeat="grocery in groceries">
       {{ grocery.name }} <button ng-click="deleteGrocery($event,grocery,$index)">X</button>
     </li>
   </ul>

@@ -16,6 +16,8 @@
   <ol>
     <li ng-repeat="grocery in groceries | orderBy: 'name'" ng-class="{healthy: grocery.healthy}">
       {{ grocery.name }} | {{grocery.healthy}} |
+      <!-- $index does not provide the value I need because I used orderBy to alter the arrays index -->
+      <!-- <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button> -->
       <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button>
     </li>
   </ol>

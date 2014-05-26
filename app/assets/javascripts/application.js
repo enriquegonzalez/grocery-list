@@ -55,8 +55,10 @@ groceriesApp.controller('GroceriesCtrl', ['$scope', 'Grocery', function ($scope,
     $scope.isHealthy = true;
   };
 
-  $scope.deleteGrocery = function(e, grocery, index) {
+  $scope.deleteGrocery = function(e, grocery) {
     e.preventDefault();
+    // Because I'm using orderBy passing $index doesn't work so I need to find the index of the newly ordered array
+    var index = $scope.groceries.indexOf(grocery);
     $scope.groceries.splice(index, 1);
     Grocery.delete(grocery);
   };

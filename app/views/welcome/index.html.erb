@@ -1,24 +1,23 @@
 <section ng-controller="GroceriesCtrl">
   <h1>Grocery List</h1>
-  <form ng-submit="addGrocery($event)">
   <div class="row">
     <div class="small-6 columns">
-      <label for="new_grocery">Add a Grocery Item to Your List</label>
-      <input id="new_grocery" name="new_grocery" type="text" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
-    </div>
-    <div class="small-6 columns">
-      <label for="is_healthy" class="healthy">
-      <input id="is_healthy" name="is_healthy" type="checkbox" ng-model="isHealthy" ng-init="isHealthy = true"> It's healthy!</label>
+      <form ng-submit="addGrocery($event)" class="form--groceries">
+        <label for="new_grocery">Add a Grocery Item to Your List</label>
+        <input id="new_grocery" name="new_grocery" type="text" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
+        <label for="is_healthy" class="healthy">
+        <input id="is_healthy" name="is_healthy" type="checkbox" ng-model="isHealthy" ng-init="isHealthy = true"> It's healthy!</label>
+      </form>
     </div>
   </div>
-  </form>
+
 
   <ol>
     <li ng-repeat="grocery in groceries | orderBy: 'name'" ng-class="{healthy: grocery.healthy}">
-      {{ grocery.name }} | {{grocery.healthy}} |
+      {{ grocery.name }}
       <!-- $index does not provide the value I need because I used orderBy to alter the arrays index -->
       <!-- <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button> -->
-      <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button>
+      <a class="link--delete" ng-click="deleteGrocery($event, grocery)"><i class="fi-trash large"></i></a>
     </li>
   </ol>
 

@@ -16,6 +16,16 @@
 
  */
 
+@import 'foundation-icons';
+
+.form--groceries {
+  margin: 2rem 0 2rem 0;
+}
+
 .healthy {
   color: green;
+}
+
+.link--delete, .link--delete:hover {
+  color: red;
 }

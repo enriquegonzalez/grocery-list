@@ -4,7 +4,8 @@ class GroceriesController < ApplicationController
   # GET /groceries
   # GET /groceries.json
   def index
-    @groceries = Grocery.all
+    # @groceries = Grocery.all
+    @groceries = Grocery.order(name: :asc)
   end
 
   # GET /groceries/1

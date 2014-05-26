@@ -14,8 +14,9 @@
   </form>
 
   <ol class="groceries">
-    <li ng-repeat="grocery in groceries">
-      {{ grocery.name }} <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button>
+    <li ng-repeat="grocery in groceries" ng-class:"{healthy: grocery.healthy}">
+      {{ grocery.name }}
+      <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button>
     </li>
   </ol>
 

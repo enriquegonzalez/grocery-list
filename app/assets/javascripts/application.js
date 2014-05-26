@@ -21,9 +21,8 @@
 // MODULE
 var groceriesApp = angular.module('groceriesApp', ['ngResource']);
 
-// Cross Site Request Forgery token is required by Rails for AJAX requests.
+// CSRF Cross Site Request Forgery token is required by Rails for AJAX requests.
 groceriesApp.config(['$httpProvider', function ($httpProvider) {
-  // CSRF
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 }]);
 
@@ -38,13 +37,11 @@ groceriesApp.factory('Grocery', ['$resource', function ($resource) {
 }]);
 
 
-
 // CONTROLLER
 groceriesApp.controller('GroceriesCtrl', ['$scope', 'Grocery', function ($scope, Grocery){
 
   // Get the Groceries
   $scope.groceries = Grocery.query();
-  console.log($scope.groceries);
 
   // Add Grocery Item
   $scope.addGrocery = function(e) {
@@ -52,14 +49,18 @@ groceriesApp.controller('GroceriesCtrl', ['$scope', 'Grocery', function ($scope,
     grocery = new Grocery({name: $scope.newGrocery, healthy: $scope.isHealthy});
     grocery.$save();
     // prepends the new array to the old one, it's faster than unshift, which has to shift everything over.
-    $scope.groceries = [grocery].concat($scope.groceries);
+    // $scope.groceries = [grocery].concat($scope.groceries);
+    $scope.groceries.push(grocery);
     $scope.newGrocery = "";
   };
 
-  $scope.deleteGrocery = function(e) {
+  $scope.deleteGrocery = function(e, grocery, index) {
     e.preventDefault();
+    $scope.groceries.splice(index, 1);
+    Grocery.delete(grocery);
   };
 
 }]);
 
+// Foundation
 // $(function(){ $(document).foundation(); });

@@ -30,7 +30,6 @@ groceriesApp.config(['$httpProvider', function ($httpProvider) {
 
 // FACTORY
 groceriesApp.factory('Grocery', ['$resource', function ($resource) {
-  alert('im here at the factory');
   return $resource("/groceries/:id.json", {id: '@id'}, {
     update: {
       method: 'PUT'
@@ -63,4 +62,4 @@ groceriesApp.controller('GroceriesCtrl', ['$scope', 'Grocery', function ($scope,
 
 }]);
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });

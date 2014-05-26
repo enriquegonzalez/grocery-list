@@ -7,14 +7,14 @@
       <input id="new_grocery" name="new_grocery" type="text" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
     </div>
     <div class="small-6 columns">
-      <label for="is_healthy">
+      <label for="is_healthy" class="healthy">
       <input id="is_healthy" name="is_healthy" type="checkbox" ng-model="isHealthy" ng-init="isHealthy = true"> It's healthy!</label>
     </div>
   </div>
   </form>
 
   <ol>
-    <li ng-repeat="grocery in groceries" ng-class="{healthy: grocery.healthy}">
+    <li ng-repeat="grocery in groceries | orderBy: 'name'" ng-class="{healthy: grocery.healthy}">
       {{ grocery.name }} | {{grocery.healthy}} |
       <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button>
     </li>

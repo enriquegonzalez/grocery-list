@@ -1,7 +1,7 @@
 <section ng-controller="GroceriesCtrl">
   <h1>Grocery List</h1>
   <div class="row">
-    <div class="small-6 columns">
+    <div class="large-6 medium-7 columns">
       <form ng-submit="addGrocery($event)" class="form--groceries">
         <label for="new_grocery">Add a Grocery Item to Your List</label>
         <input id="new_grocery" name="new_grocery" type="text" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
@@ -12,12 +12,12 @@
   </div>
 
 
-  <ol>
+  <ol class="grocery-list">
     <li ng-repeat="grocery in groceries | orderBy: 'name'" ng-class="{healthy: grocery.healthy}">
-      {{ grocery.name }}
-      <!-- $index does not provide the value I need because I used orderBy to alter the arrays index -->
-      <!-- <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button> -->
-      <a class="link--delete" ng-click="deleteGrocery($event, grocery)"><i class="fi-trash large"></i></a>
+        <span class="grocery-list__item">{{ grocery.name }}</span>
+        <!-- $index does not provide the value I need because I used orderBy to alter the arrays index -->
+        <!-- <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button> -->
+        <a class="link--delete" ng-click="deleteGrocery($event, grocery)"><i class="fi-trash large"></i></a>
     </li>
   </ol>
 

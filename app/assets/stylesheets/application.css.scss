@@ -22,10 +22,27 @@
   margin: 2rem 0 2rem 0;
 }
 
+.grocery-list {
+  position: relative;
+  left: 2rem
+}
+
+.grocery-list__item {
+  display: inline-block;
+  width: 15rem
+}
+
 .healthy {
   color: green;
 }
 
-.link--delete, .link--delete:hover {
-  color: red;
+.link--delete {
+  color: hsla(0, 100%, 42%, .75);
+  font-size: 1.25rem;
+  position: relative;
+  right: 18rem
+}
+
+.link--delete:hover {
+  color: hsla(0, 100%, 42%, 1)
 }

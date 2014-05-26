@@ -52,6 +52,7 @@ groceriesApp.controller('GroceriesCtrl', ['$scope', 'Grocery', function ($scope,
     // $scope.groceries = [grocery].concat($scope.groceries);
     $scope.groceries.push(grocery);
     $scope.newGrocery = "";
+    $scope.isHealthy = true;
   };
 
   $scope.deleteGrocery = function(e, grocery, index) {

@@ -4,18 +4,18 @@
   <div class="row">
     <div class="small-6 columns">
       <label for="new_grocery">Add a Grocery Item to Your List</label>
-      <input id="new_grocery" name="new_grocery" type="text" class="form-control" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
+      <input id="new_grocery" name="new_grocery" type="text" ng-model="newGrocery" placeholder="Add a grocery item. . ." required>
     </div>
     <div class="small-6 columns">
       <label for="is_healthy">
-      <input id="is_healthy" name="is_healthy" type="checkbox" class="form-control" ng-model="isHealthy" ng-checked="true"> It's healthy!</label>
+      <input id="is_healthy" name="is_healthy" type="checkbox" ng-model="isHealthy" ng-init="isHealthy = true"> It's healthy!</label>
     </div>
   </div>
   </form>
 
-  <ol class="groceries">
-    <li ng-repeat="grocery in groceries" ng-class:"{healthy: grocery.healthy}">
-      {{ grocery.name }}
+  <ol>
+    <li ng-repeat="grocery in groceries" ng-class="{healthy: grocery.healthy}">
+      {{ grocery.name }} | {{grocery.healthy}} |
       <button class="button tiny alert" ng-click="deleteGrocery($event,grocery,$index)">X</button>
     </li>
   </ol>
